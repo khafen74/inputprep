@@ -176,6 +176,8 @@ class inputprep:
         self.action.triggered.connect(self.run)
         self.menu.addAction(self.action)
         self.dlg = inputprepDialog()
+        self.dlg.cb_soilRaster.stateChanged.connect(self.enableSoilRasters)
+            #activate layout
 
 
     def unload(self):
@@ -188,6 +190,28 @@ class inputprep:
         # remove the toolbar
         del self.toolbar
 
+
+    def enableSoilRasters(self):
+        if self.dlg.cb_soilRaster.isChecked():
+            self.dlg.label_8.setEnabled(True)
+            self.dlg.label_9.setEnabled(True)
+            self.dlg.label_10.setEnabled(True)
+            self.dlg.le_hka.setEnabled(True)
+            self.dlg.le_vka.setEnabled(True)
+            self.dlg.le_fc.setEnabled(True)
+            self.dlg.tb_hka.setEnabled(True)
+            self.dlg.tb_vka.setEnabled(True)
+            self.dlg.tb_fc.setEnabled(True)
+        else:
+            self.dlg.label_8.setEnabled(False)
+            self.dlg.label_9.setEnabled(False)
+            self.dlg.label_10.setEnabled(False)
+            self.dlg.le_hka.setEnabled(False)
+            self.dlg.le_vka.setEnabled(False)
+            self.dlg.le_fc.setEnabled(False)
+            self.dlg.tb_hka.setEnabled(False)
+            self.dlg.tb_vka.setEnabled(False)
+            self.dlg.tb_fc.setEnabled(False)
 
     def run(self):
         """Run method that performs all the real work"""

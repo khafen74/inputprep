@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c4259369-50c5-47b5-b8de-2e9a1de069a2" name="Default" comment="" />
+    <list default="true" id="c4259369-50c5-47b5-b8de-2e9a1de069a2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inputprep.py" afterPath="$PROJECT_DIR$/inputprep.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inputprep_dialog_base.ui" afterPath="$PROJECT_DIR$/inputprep_dialog_base.ui" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,8 +18,8 @@
       <file leaf-file-name="inputprep.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/inputprep.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="177" column="36" lean-forward="false" selection-start-line="177" selection-start-column="36" selection-end-line="177" selection-end-column="36" />
+            <state relative-caret-position="542">
+              <caret line="213" column="43" lean-forward="false" selection-start-line="213" selection-start-column="43" selection-end-line="213" selection-end-column="43" />
               <folding>
                 <element signature="e#1239#1314#0" expanded="true" />
               </folding>
@@ -83,7 +86,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="F:/01_etal/Projects/Modeling/BeaverWaterStorage/code/python/feature_clip_raster" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../RasterProperties" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -148,8 +151,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/inputprep.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="177" column="36" lean-forward="false" selection-start-line="177" selection-start-column="36" selection-end-line="177" selection-end-column="36" />
+        <state relative-caret-position="542">
+          <caret line="213" column="43" lean-forward="false" selection-start-line="213" selection-start-column="43" selection-end-line="213" selection-end-column="43" />
           <folding>
             <element signature="e#1239#1314#0" expanded="true" />
           </folding>
