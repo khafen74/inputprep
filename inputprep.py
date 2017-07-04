@@ -21,7 +21,7 @@
  ***************************************************************************/
 """
 from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
-from PyQt4.QtGui import QAction, QIcon
+from PyQt4.QtGui import QAction, QIcon, QMenu
 # Initialize Qt resources from file resources.py
 import resources
 # Import the code for the dialog
@@ -160,12 +160,22 @@ class inputprep:
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
 
-        icon_path = ':/plugins/inputprep/icon.png'
-        self.add_action(
-            icon_path,
-            text=self.tr(u'Input prep'),
-            callback=self.run,
-            parent=self.iface.mainWindow())
+        # Check if the menu exists and get it
+        self.menu = self.iface.mainWindow().findChild(QMenu, '&Beaver Dam Tools')
+
+        # If the menu does not exist, create it!
+        if not self.menu:
+            self.menu = QMenu('&Beaver Dam Tools', self.iface.mainWindow().menuBar())
+            self.menu.setObjectName('&Beaver Dam Tools')
+            actions = self.iface.mainWindow().menuBar().actions()
+            lastAction = actions[-1]
+            self.iface.mainWindow().menuBar().insertMenu(lastAction, self.menu)
+
+        self.action = QAction(QIcon(":/plugins/inputprep/icon.png"), "Input prep",
+                              self.iface.mainWindow())
+        self.action.triggered.connect(self.run)
+        self.menu.addAction(self.action)
+        self.dlg = inputprepDialog()
 
 
     def unload(self):
