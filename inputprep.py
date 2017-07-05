@@ -20,13 +20,14 @@
  *                                                                         *
  ***************************************************************************/
 """
-from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
-from PyQt4.QtGui import QAction, QIcon, QMenu
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
+from qgis.gui import QgsMessageBar
 # Initialize Qt resources from file resources.py
 import resources
 # Import the code for the dialog
 from inputprep_dialog import inputprepDialog
-import os.path
+import os
 
 
 class inputprep:
@@ -176,7 +177,12 @@ class inputprep:
         self.action.triggered.connect(self.run)
         self.menu.addAction(self.action)
         self.dlg = inputprepDialog()
+
         self.dlg.cb_soilRaster.stateChanged.connect(self.enableSoilRasters)
+        self.dlg.tb_loadShp.clicked.connect(self.loadShp)
+        self.dlg.cb_layers.activated.connect(self.showFields)
+        self.importLayers()
+
             #activate layout
 
 
@@ -212,6 +218,43 @@ class inputprep:
             self.dlg.tb_hka.setEnabled(False)
             self.dlg.tb_vka.setEnabled(False)
             self.dlg.tb_fc.setEnabled(False)
+
+    def importLayers(self, layerName = None):
+        self.dlg.cb_layers.clear()
+        layers = self.iface.legendInterface().layers()
+        layer_list = []
+        for layer in layers:
+            if layer.LayerType() == 0:
+                layer_list.append(layer.name())
+
+        self.dlg.cb_layers.addItems(layer_list)
+        if layerName is None:
+            if len(layer_list)>0:
+                self.dlg.cb_layers.setCurrentIndex(0)
+        else:
+            self.dlg.cb_layers.setCurrentIndex(layer_list.index(layerName))
+
+        self.showFields()
+
+    def loadShp(self):
+        self.inShp = str(QFileDialog.getOpenFileNameAndFilter(filter = "Shapefiles (*.shp)")[0])
+        newLayer = self.iface.addVectorLayer(self.inShp, str.split(os.path.basename(self.inShp),".")[0], "ogr")
+        if not newLayer:
+            print "layer failed to load"
+        else:
+            self.importLayers(newLayer.name())
+
+    def showFields(self):
+        self.dlg.cb_fields.clear()
+        layerName = self.dlg.cb_layers.currentText()
+        layers = self.iface.legendInterface().layers()
+        for layer in layers:
+            if layer.name() == layerName:
+                fields = [field.name() for field in layer.pendingFields()]
+                self.dlg.cb_fields.addItems(fields)
+                break
+
+
 
     def run(self):
         """Run method that performs all the real work"""

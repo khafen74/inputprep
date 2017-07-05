@@ -29,7 +29,7 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
-  <widget class="QToolButton" name="toolButton">
+  <widget class="QToolButton" name="tb_loadShp">
    <property name="geometry">
     <rect>
      <x>560</x>
@@ -55,23 +55,13 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBox">
+  <widget class="QComboBox" name="cb_fields">
    <property name="geometry">
     <rect>
      <x>180</x>
      <y>40</y>
      <width>371</width>
      <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>10</y>
-     <width>371</width>
-     <height>20</height>
     </rect>
    </property>
   </widget>
@@ -108,7 +98,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Field with unique IDs to clip by:</string>
+    <string>Field to clip by:</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
@@ -414,6 +404,16 @@
    </property>
    <property name="text">
     <string>Field capacity:</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="cb_layers">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>10</y>
+     <width>371</width>
+     <height>22</height>
+    </rect>
    </property>
   </widget>
  </widget>
