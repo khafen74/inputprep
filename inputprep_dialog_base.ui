@@ -42,7 +42,7 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="toolButton_2">
+  <widget class="QToolButton" name="tb_outDir">
    <property name="geometry">
     <rect>
      <x>560</x>
@@ -65,7 +65,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="le_outDir">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -114,7 +114,7 @@
     <string>Output directory:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
+  <widget class="QLineEdit" name="le_inBrat">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -124,7 +124,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QToolButton" name="toolButton_3">
+  <widget class="QToolButton" name="tb_inBrat">
    <property name="geometry">
     <rect>
      <x>560</x>
@@ -150,7 +150,7 @@
     <string>BRAT shapefile:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_4">
+  <widget class="QLineEdit" name="le_inDem">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -160,7 +160,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QToolButton" name="toolButton_4">
+  <widget class="QToolButton" name="tb_inDem">
    <property name="geometry">
     <rect>
      <x>560</x>
@@ -186,7 +186,7 @@
     <string>DEM:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_5">
+  <widget class="QLineEdit" name="le_inFac">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -196,7 +196,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QToolButton" name="toolButton_5">
+  <widget class="QToolButton" name="tb_inFac">
    <property name="geometry">
     <rect>
      <x>560</x>
@@ -222,7 +222,7 @@
     <string>Rasterized stream network:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_6">
+  <widget class="QLineEdit" name="le_inFdir">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -232,7 +232,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QToolButton" name="toolButton_6">
+  <widget class="QToolButton" name="tb_inFdir">
    <property name="geometry">
     <rect>
      <x>560</x>

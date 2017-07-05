@@ -18,8 +18,8 @@
       <file leaf-file-name="inputprep.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/inputprep.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="559">
-              <caret line="236" column="25" lean-forward="false" selection-start-line="236" selection-start-column="25" selection-end-line="236" selection-end-column="25" />
+            <state relative-caret-position="322">
+              <caret line="186" column="98" lean-forward="false" selection-start-line="186" selection-start-column="98" selection-end-line="186" selection-end-column="98" />
               <folding>
                 <element signature="e#1239#1265#0" expanded="true" />
               </folding>
@@ -28,6 +28,12 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>loadShp</find>
+      <find>importLayers</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -151,8 +157,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/inputprep.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="236" column="25" lean-forward="false" selection-start-line="236" selection-start-column="25" selection-end-line="236" selection-end-column="25" />
+        <state relative-caret-position="322">
+          <caret line="186" column="98" lean-forward="false" selection-start-line="186" selection-start-column="98" selection-end-line="186" selection-end-column="98" />
           <folding>
             <element signature="e#1239#1265#0" expanded="true" />
           </folding>

@@ -22,7 +22,7 @@
 """
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
-from qgis.gui import QgsMessageBar
+from qgis.core import*
 # Initialize Qt resources from file resources.py
 import resources
 # Import the code for the dialog
@@ -179,7 +179,15 @@ class inputprep:
         self.dlg = inputprepDialog()
 
         self.dlg.cb_soilRaster.stateChanged.connect(self.enableSoilRasters)
-        self.dlg.tb_loadShp.clicked.connect(self.loadShp)
+        self.dlg.tb_loadShp.clicked.connect(self.loadShpClip)
+        self.dlg.tb_outDir.clicked.connect(self.loadDir)
+        self.dlg.tb_inBrat.clicked.connect(self.loadShp)
+        self.dlg.tb_inDem.clicked.connect(lambda: self.setRasterLineEditText(self.dlg.le_inDem))
+        self.dlg.tb_inFac.clicked.connect(lambda: self.setRasterLineEditText(self.dlg.le_inFac))
+        self.dlg.tb_inFdir.clicked.connect(lambda: self.setRasterLineEditText(self.dlg.le_inFdir))
+        self.dlg.tb_hka.clicked.connect(lambda: self.setRasterLineEditText(self.dlg.le_hka))
+        self.dlg.tb_vka.clicked.connect(lambda: self.setRasterLineEditText(self.dlg.le_vka))
+        self.dlg.tb_fc.clicked.connect(lambda: self.setRasterLineEditText(self.dlg.le_rc))
         self.dlg.cb_layers.activated.connect(self.showFields)
         self.importLayers()
 
@@ -224,7 +232,7 @@ class inputprep:
         layers = self.iface.legendInterface().layers()
         layer_list = []
         for layer in layers:
-            if layer.LayerType() == 0:
+            if layer.type() == QgsMapLayer.VectorLayer:
                 layer_list.append(layer.name())
 
         self.dlg.cb_layers.addItems(layer_list)
@@ -236,13 +244,32 @@ class inputprep:
 
         self.showFields()
 
+    def loadDir(self):
+        self.dlg.le_outDir.setText(str(QFileDialog.getExistingDirectory(caption = "Select output directory")))
+
+    def loadRaster(self):
+        inRas = str(QFileDialog.getOpenFileNameAndFilter(filter="GeoTiff File (*.tif *.tiff *.TIF *.TIFF)")[0])
+        if inRas:
+            self.iface.addRasterLayer(inRas, os.path.basename(inRas))
+            return inRas
+
     def loadShp(self):
+        inShp = str(QFileDialog.getOpenFileNameAndFilter(filter = "Shapefiles (*.shp)")[0])
+        if inShp is not None:
+            newLayer = self.iface.addVectorLayer(inShp, str.split(os.path.basename(inShp),".")[0], "ogr")
+            if not newLayer:
+                print "layer failed to load"
+
+    def loadShpClip(self):
         self.inShp = str(QFileDialog.getOpenFileNameAndFilter(filter = "Shapefiles (*.shp)")[0])
         newLayer = self.iface.addVectorLayer(self.inShp, str.split(os.path.basename(self.inShp),".")[0], "ogr")
         if not newLayer:
             print "layer failed to load"
         else:
             self.importLayers(newLayer.name())
+
+    def setRasterLineEditText(self, lineEdit):
+        lineEdit.setText(self.loadRaster())
 
     def showFields(self):
         self.dlg.cb_fields.clear()
@@ -253,8 +280,6 @@ class inputprep:
                 fields = [field.name() for field in layer.pendingFields()]
                 self.dlg.cb_fields.addItems(fields)
                 break
-
-
 
     def run(self):
         """Run method that performs all the real work"""
